@@ -1,34 +1,28 @@
-# branches to build
-branches:
-  only:
-    - master
-  except:
-    - gh-pages
-
 image: Ubuntu1804  # образ для сборки
 
 stack: node 16  # окружение
 
-# build cache to preserve files/folders between builds
-cache:
-  - node_modules # local npm modules
+branches:
+  only:
+    - master  # ветка git
 
-# scripts that run after cloning repository
+cache: node_modules  # кеширование
+
 install:
-  - yarn # команда установки зависимостей
+  - npm install  # команда установки зависимостей
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
 build_script:
-  - yarn build   # команда сборки
+  - npm run build   # команда сборки
 
-# to run your custom scripts instead of automatic tests
 test_script:
-  - yarn run lint && yarn notest
+  - npm run lint && npm test  # скрипт тестирования
 
-deploy_script: # скрипт развёртывания
+deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
   - git config --global user.name AppVeyor
   - git config --global user.email ci@appveyor.com
   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
+  
