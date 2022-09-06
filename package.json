@@ -8,11 +8,7 @@
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint .",
     "test": "jest",
-<<<<<<< HEAD
     "coverage": "jest --coverage"
-=======
-    "coverage": "jest --coverage" 
->>>>>>> 4dde5443e497875d9b5257089b4ee8dfb6d0a98a
   },
   "jest":{
     "testEnvironment": "jsdom"
