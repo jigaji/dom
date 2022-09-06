@@ -6,7 +6,7 @@ const score = document.querySelector('#score');
 let result = 0;
 let hitPosition;
 
-export default function randomSquare() {
+function randomSquare() {
   squares.forEach((square) => {
     square.classList.remove('goblin');
   });
