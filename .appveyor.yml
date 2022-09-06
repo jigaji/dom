@@ -25,3 +25,7 @@ deploy_script:  # скрипт развёртывания
   - git config --global user.email ci@appveyor.com
   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
+
+  environment:
+    my_variable:
+      secure: Kj7UoLo0WCtA0DPi95e7JMTf7LErooV7tdqgHjsCfFFk3RZNV4e/Gm6YK7nRLJkLxILsg9sClu/5O2Mb8KXne6oN1HeUiX/syC6hKZxA5q0rN0Rsug32TB1ecGp4xLrR
